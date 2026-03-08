@@ -33,5 +33,9 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Jenish9_devsecops-petclinic
-
+        run: mvn -B clean verify -DskipTests \
+              org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+             -Dsonar.projectKey=Jenish9_devsecops-petclinic \
+             -Dsonar.organization=jenish9 \
+             -Dsonar.host.url=https://sonarcloud.io \
+             -Dsonar.login=$SONAR_TOKEN
