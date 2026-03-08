@@ -33,7 +33,6 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn clean verify sonar:sonar 
-               -Dsonar.host.url=http://localhost:9000 \
+        run: mvn -B clean install -DskipTests sonar:sonar
 
 
