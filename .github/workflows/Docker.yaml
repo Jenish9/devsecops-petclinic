@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+      - name: Clean workspace
+        run: sudo chown -R $USER:$USER .
       - name: Build Application
         run: mvn clean package -DskipTests
 
