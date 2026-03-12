@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        
       - name: Clean workspace
         run: sudo chown -R $USER:$USER .
 
