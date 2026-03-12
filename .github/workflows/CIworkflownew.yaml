@@ -20,8 +20,15 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
-      - name: Sonar Scan
-        run: mvn sonar:sonar
+      - name: SonarCloud Scan
+        env:
+         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+           mvn sonar:sonar \
+             -Dsonar.projectKey=jenish9_devsecops-petclinic \
+             -Dsonar.organization=jenish9 \
+             -Dsonar.host.url=https://sonarcloud.io \
+             -Dsonar.login=$SONAR_TOKEN
 
   snyk:
     needs: sonar
