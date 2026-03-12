@@ -35,12 +35,10 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
-      - name: Snyk Scan
+      - name: Run Snyk Security Scan
         uses: snyk/actions/maven@master
-        continue-on-error: true
         env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-
+         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
   docker:
     needs: snyk
     runs-on: self-hosted
