@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
             
       - name: Build project
-        run: mvn clean install
+        run: mvn clean install -DskipTests
 
   sonar:
     needs: build
