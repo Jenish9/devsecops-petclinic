@@ -13,9 +13,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         
-      - name: Clean workspace
-        run: sudo chown -R $USER:$USER .
-
+     
       - name: Run Snyk Security Scan
         uses: snyk/actions/maven@master
         continue-on-error: true
