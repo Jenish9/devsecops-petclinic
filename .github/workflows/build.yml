@@ -43,7 +43,7 @@ jobs:
         run: |
           mvn clean package -DskipTests
           mvn sonar:sonar \
-            -Dsonar.projectKey=jenish9_devsecops-petclinic \
+            -Dsonar.projectKey=Jenish9_devsecops-petclinic \
             -Dsonar.organization=jenish9 \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=$SONAR_TOKEN
