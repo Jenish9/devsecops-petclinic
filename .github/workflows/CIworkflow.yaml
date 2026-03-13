@@ -44,19 +44,17 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Verify Java
-        run: |
-          java -version
-          echo $JAVA_HOME
-
       - name: Install Dependencies
         run: mvn clean install -DskipTests
 
-      - name: Run Snyk Security Scan
-        uses: snyk/actions/maven@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-          JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+      - name: Install Snyk CLI
+        run: npm install -g snyk
+
+      - name: Authenticate Snyk
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
+
+      - name: Run Snyk Test
+        run: snyk test
 
 
   docker:
