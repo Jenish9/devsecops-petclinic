@@ -53,7 +53,7 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Run Snyk Security Scan
-        uses: snyk/actions/maven@v3
+        uses: snyk/actions/maven@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
