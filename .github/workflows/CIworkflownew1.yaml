@@ -35,10 +35,20 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+        distribution: temurin
+        java-version: 17
+
+      - name: Install Dependencies
+        run: mvn clean install -DskipTests
+
       - name: Run Snyk Security Scan
         uses: snyk/actions/maven@master
         env:
          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+         
   docker:
     needs: snyk
     runs-on: self-hosted
